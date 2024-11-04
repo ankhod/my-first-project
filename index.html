@@ -23,5 +23,33 @@
         </a>
       </section>
     </main>
+    <canvas
+      id="myCanvas"
+      width="500"
+      height="400"
+      style="border: 1px solid #000000"
+    ></canvas>
+
+    <script>
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Рисуем прямоугольник
+      ctx.fillStyle = "#FF0000";
+      ctx.fillRect(20, 20, 150, 100);
+
+      // Рисуем окружность
+      ctx.beginPath();
+      ctx.arc(300, 200, 50, 0, 2 * Math.PI);
+      ctx.fillStyle = "#00FF00";
+      ctx.fill();
+
+      // Рисуем линию
+      ctx.beginPath();
+      ctx.moveTo(50, 300);
+      ctx.lineTo(450, 300);
+      ctx.strokeStyle = "#0000FF";
+      ctx.stroke();
+    </script>
   </body>
 </html>
