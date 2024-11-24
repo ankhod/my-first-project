@@ -4,54 +4,6 @@ console.log(Math.random());
 console.log(0.1 + 0.2 === 0.3); // false
 console.log((0.1 + 0.2).toFixed(1)); // 0.30000000000000004
 
-function makeMessage(username) {
-  console.log(`Hello ${username}`);
-}
-
-makeMessage("Jacob");
-
-function multiply(x, y, z) {
-  console.log(`Result: ${x * y * z}`);
-}
-
-console.log("Log before multiply execution");
-multiply(2, 3, 5); // "Result: 30"
-console.log("Log after multiply execution");
-
-// Глобальна змінна
-const value = "I'm a global variable";
-
-function foo() {
-  // Можна звернутися до глобальної змінної
-  console.log(value); // "I'm a global variable"
-}
-
-foo();
-// Можна звернутися до глобальної змінної
-console.log(value);
-// "I'm a global variable"
-
-let price = 0;
-const subscription = "free";
-
-if (subscription === "pro") {
-  price = 100;
-}
-
-console.log(price); //0
-
-function checkAge(age) {
-  if (age === 17) {
-    return "undefined";
-  } else {
-    return "You are an adult";
-  }
-}
-console.log(checkAge(20));
-console.log(checkAge(17));
-console.log(checkAge(10));
-console.log(checkAge(30));
-
 const grade = 85;
 
 if (grade >= 90) {
@@ -138,3 +90,73 @@ console.log(typeof 4.5);
 
 console.log(typeof "x");
 // → string
+
+function calcAverageCalories(days) {
+  // Якщо масив порожній, повертаємо 0
+  if (days.length === 0) {
+    return 0;
+  }
+
+  // Обчислюємо загальну кількість калорій
+  let totalCalories = 0;
+  for (let i = 0; i < days.length; i++) {
+    totalCalories += days[i].calories;
+  }
+
+  // Обчислюємо середнє значення калорій
+  const averageCalories = totalCalories / days.length;
+  return averageCalories;
+}
+
+// Перевірка коректності роботи функції
+console.log(
+  calcAverageCalories([
+    { day: "monday", calories: 3010 },
+    { day: "tuesday", calories: 3200 },
+    { day: "wednesday", calories: 3120 },
+    { day: "thursday", calories: 2900 },
+    { day: "friday", calories: 3450 },
+    { day: "saturday", calories: 3280 },
+    { day: "sunday", calories: 3300 },
+  ])
+); // 3180
+
+console.log(
+  calcAverageCalories([
+    { day: "monday", calories: 2040 },
+    { day: "tuesday", calories: 2270 },
+    { day: "wednesday", calories: 2420 },
+    { day: "thursday", calories: 1900 },
+    { day: "friday", calories: 2370 },
+    { day: "saturday", calories: 2280 },
+    { day: "sunday", calories: 2610 },
+  ])
+); // 2270
+
+console.log(calcAverageCalories([])); // 0
+
+const profile = {
+  username: "Jacob",
+  playTime: 300,
+  // Метод для зміни імені користувача
+  changeUsername(newName) {
+    this.username = newName;
+  },
+  // Метод для оновлення кількості ігрових годин
+  updatePlayTime(hours) {
+    this.playTime += hours;
+  },
+  // Метод для отримання інформації про користувача
+  getInfo() {
+    return `${this.username} has ${this.playTime} active hours!`;
+  },
+};
+
+// Перевірка коректності роботи методів
+console.log(profile.getInfo()); // "Jacob has 300 active hours!"
+
+profile.changeUsername("Marco");
+console.log(profile.getInfo()); // "Marco has 300 active hours!"
+
+profile.updatePlayTime(20);
+console.log(profile.getInfo()); // "Marco has 320 active hours!"
