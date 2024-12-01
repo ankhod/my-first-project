@@ -18,3 +18,15 @@ console.log(makeArray(["Mango"], ["Ajax", "Chelsea", "Poly", "Houston"], 3)); //
 console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2)); // ["Earth", "Jupiter"]
 console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4)); // ["Earth", "Jupiter", "Neptune", "Uranus"]
 console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0)); // []
+
+const book = {
+  author: "Bernard Cornwell",
+  genres: ["historical prose", "adventure"],
+  rating: 8.38,
+};
+const keys = Object.keys(book);
+
+for (const key of keys) {
+  console.log(key); // Ключ
+  console.log(book[key]); // Значення властивості
+}
